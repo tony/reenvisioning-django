@@ -21,6 +21,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -58,6 +59,7 @@ TEMPLATES = [
     },
 ]
 
+WSGI_APPLICATION = "envision.wsgi.application"
 
 DATABASES = {
     "default": {
@@ -66,4 +68,14 @@ DATABASES = {
     }
 }
 
-DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "UTC"
+
+USE_I18N = True
+
+USE_TZ = True
+
+STATIC_URL = "static/"
