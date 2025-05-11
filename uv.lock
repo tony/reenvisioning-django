@@ -27,14 +27,14 @@ wheels = [
 
 [[package]]
 name = "click"
-version = "8.1.8"
+version = "8.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b9/2e/0090cbf739cee7d23781ad4b89a9894a41538e4fcf4c31dcdd705b78eb8b/click-8.1.8.tar.gz", hash = "sha256:ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a", size = 226593, upload-time = "2024-12-21T18:38:44.339Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/cd/0f/62ca20172d4f87d93cf89665fbaedcd560ac48b465bd1d92bfc7ea6b0a41/click-8.2.0.tar.gz", hash = "sha256:f5452aeddd9988eefa20f90f05ab66f17fce1ee2a36907fd30b05bbb5953814d", size = 235857, upload-time = "2025-05-10T22:21:03.111Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7e/d4/7ebdbd03970677812aac39c869717059dbb71a4cfc033ca6e5221787892c/click-8.1.8-py3-none-any.whl", hash = "sha256:63c132bbbed01578a06712a2d1f497bb62d9c1c0d329b7903a866228027263b2", size = 98188, upload-time = "2024-12-21T18:38:41.666Z" },
+    { url = "https://files.pythonhosted.org/packages/a2/58/1f37bf81e3c689cc74ffa42102fa8915b59085f54a6e4a80bc6265c0f6bf/click-8.2.0-py3-none-any.whl", hash = "sha256:6b303f0b2aa85f1cb4e5303078fadcbcd4e476f114fab9b5007005711839325c", size = 102156, upload-time = "2025-05-10T22:21:01.352Z" },
 ]
 
 [[package]]
@@ -444,7 +444,7 @@ wheels = [
 
 [[package]]
 name = "strawberry-graphql"
-version = "0.266.1"
+version = "0.268.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "graphql-core" },
@@ -452,9 +452,9 @@ dependencies = [
     { name = "python-dateutil" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/06/d3/9ab3204bbffd96288b1884d32ae9e5f6deca19b6e90e22a487a45aad4cfd/strawberry_graphql-0.266.1.tar.gz", hash = "sha256:44042cc4f5f1e64eae60b315953e85b70245c89c48b05693c7befd10f4aed37b", size = 204003, upload-time = "2025-05-06T16:12:36.373Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d6/27/705e7b0541bf4b7647b2b9630fb40b6cc9669c453faaca511421051d6854/strawberry_graphql-0.268.0.tar.gz", hash = "sha256:fc9ad39259a812179b86175ef957bbbb9cc7e8041c0f60c59ec36ac2a88d2d0e", size = 204530, upload-time = "2025-05-10T18:00:47.835Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4c/b7/4fd61e262ea207c330e38cb31e477322bcdb58fb92aff082eb6bd40cbfc8/strawberry_graphql-0.266.1-py3-none-any.whl", hash = "sha256:59f91c3f22ec98701d543a599ed89c8c7ae9945326a778c41b1a83e650cc97b2", size = 297952, upload-time = "2025-05-06T16:12:33.338Z" },
+    { url = "https://files.pythonhosted.org/packages/a5/7f/c9cef250a0abecf2ffa1603f97da06cc3dbdf5363ae4fc20da990a8f4832/strawberry_graphql-0.268.0-py3-none-any.whl", hash = "sha256:e9dc8fc1603da5ac2eb5b3ce23e9f6a8ea0e4750f2d26bd6deaa523ad7e677ca", size = 298535, upload-time = "2025-05-10T18:00:44.541Z" },
 ]
 
 [package.optional-dependencies]
