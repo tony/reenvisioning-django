@@ -13,7 +13,7 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
-    "app",
+    "envision.core",
 ]
 
 MIDDLEWARE = [
@@ -42,7 +42,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ROOT_URLCONF = "app.urls"
+ROOT_URLCONF = "envision.core.urls"
 
 TEMPLATES = [
     {
