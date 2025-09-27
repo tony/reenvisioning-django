@@ -1,5 +1,7 @@
 """Tests for Django models."""
 
+from typing import Any
+
 import pytest
 from django.db import IntegrityError
 
@@ -10,19 +12,19 @@ from envision.core.models import Color, Fruit
 class TestColorModel:
     """Test cases for Color model."""
 
-    def test_create_color(self):
+    def test_create_color(self) -> None:
         """Test creating a color instance."""
         color = Color.objects.create(name="green")
         assert color.name == "green"
         assert color.pk is not None
 
-    def test_color_name_required(self):
+    def test_color_name_required(self) -> None:
         """Test that color name is required."""
-        color = Color(name=None)
+        color = Color(name=None)  # type: ignore[misc]
         with pytest.raises(IntegrityError):
             color.save()
 
-    def test_color_fruit_relationship(self, red_color, strawberry, raspberry):
+    def test_color_fruit_relationship(self, red_color: Color, strawberry: Fruit, raspberry: Fruit) -> None:
         """Test the reverse relationship from color to fruits."""
         fruits = red_color.fruits.all()
         assert fruits.count() == 2
@@ -34,32 +36,32 @@ class TestColorModel:
 class TestFruitModel:
     """Test cases for Fruit model."""
 
-    def test_create_fruit_without_color(self):
+    def test_create_fruit_without_color(self) -> None:
         """Test creating a fruit without a color."""
         fruit = Fruit.objects.create(name="banana")
         assert fruit.name == "banana"
         assert fruit.color is None
 
-    def test_create_fruit_with_color(self, red_color):
+    def test_create_fruit_with_color(self, red_color: Color) -> None:
         """Test creating a fruit with a color."""
         fruit = Fruit.objects.create(name="cherry", color=red_color)
         assert fruit.name == "cherry"
         assert fruit.color == red_color
 
-    def test_fruit_name_required(self):
+    def test_fruit_name_required(self) -> None:
         """Test that fruit name is required."""
-        fruit = Fruit(name=None)
+        fruit = Fruit(name=None)  # type: ignore[misc]
         with pytest.raises(IntegrityError):
             fruit.save()
 
-    def test_delete_color_cascades_fruit(self, strawberry, red_color):
+    def test_delete_color_cascades_fruit(self, strawberry: Fruit, red_color: Color) -> None:
         """Test that deleting a color cascades to delete related fruits."""
         assert strawberry.color == red_color
         fruit_id = strawberry.id
         red_color.delete()
         assert not Fruit.objects.filter(id=fruit_id).exists()
 
-    def test_fruit_queryset_with_color(self, strawberry, blueberry, red_color, blue_color):
+    def test_fruit_queryset_with_color(self, strawberry: Fruit, blueberry: Fruit, red_color: Color, blue_color: Color) -> None:
         """Test querying fruits by color."""
         red_fruits = Fruit.objects.filter(color=red_color)
         blue_fruits = Fruit.objects.filter(color=blue_color)
