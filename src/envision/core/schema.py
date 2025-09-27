@@ -11,9 +11,11 @@ from strawberry_django import mutations
 from .types import (
     Color,
     ColorInput,
+    ColorOrder,
     ColorPartialInput,
     Fruit,
     FruitInput,
+    FruitOrder,
     FruitPartialInput,
     User,
     UserInput,
@@ -23,10 +25,10 @@ from .types import (
 @strawberry.type
 class Query:
     fruit: Fruit = strawberry_django.field()
-    fruits: List[Fruit] = strawberry_django.field()
+    fruits: List[Fruit] = strawberry_django.field(ordering=FruitOrder)
 
     color: Color = strawberry_django.field()
-    colors: List[Color] = strawberry_django.field()
+    colors: List[Color] = strawberry_django.field(ordering=ColorOrder)
 
 
 @strawberry.type
