@@ -1,11 +1,11 @@
 """Kudos: https://github.com/strawberry-graphql/strawberry-django/blob/b8fa1c1/examples/django/app/types.py"""
 
-from typing import List
+from typing import List, Optional
 
 from django.contrib.auth import get_user_model
 
 import strawberry_django
-from strawberry_django import auto
+from strawberry import auto
 
 from . import models
 
@@ -24,7 +24,7 @@ class FruitFilter:
 class ColorFilter:
     id: auto
     name: auto
-    fruits: FruitFilter
+    fruits: Optional[FruitFilter] = None
 
 
 # order
