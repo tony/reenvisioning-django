@@ -46,7 +46,7 @@ class ColorOrder:
 
 
 @strawberry_django.type(
-    models.Fruit, filters=FruitFilter, order=FruitOrder, pagination=True
+    models.Fruit, filters=FruitFilter, pagination=True
 )
 class Fruit:
     id: auto
@@ -55,7 +55,7 @@ class Fruit:
 
 
 @strawberry_django.type(
-    models.Color, filters=ColorFilter, order=ColorOrder, pagination=True
+    models.Color, filters=ColorFilter, pagination=True
 )
 class Color:
     id: auto
