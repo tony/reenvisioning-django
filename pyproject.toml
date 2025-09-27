@@ -1,3 +1,10 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [project]
 name = "reenvisioning-django"
 version = "0.1.0"
@@ -15,8 +22,8 @@ dependencies = [
     "strawberry-graphql[debug-server]>=0.258.0",
 ]
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
   ### Testing ###
   "pytest",
   "pytest-django",
