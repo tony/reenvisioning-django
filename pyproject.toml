@@ -42,6 +42,10 @@ python_version = "3.12"
 files = [
   "src/",
 ]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "envision.settings.base"
 
 [tool.ruff]
 target-version = "py312"
