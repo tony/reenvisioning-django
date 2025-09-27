@@ -99,3 +99,75 @@ When modifying existing code:
 - Follow the existing code style (Ruff will enforce this)
 - Ensure type hints are used throughout (MyPy will check this)
 - Add tests for new functionality in the appropriate test files
+
+## Git Commit Standards
+
+### Commit Message Format
+```
+Component/File(commit-type[Subcomponent/method]): Concise description
+
+why: Explanation of necessity or impact.
+what:
+- Specific technical changes made
+- Focused on a single topic
+
+refs: #issue-number, breaking changes, or relevant links
+```
+
+### Common Commit Types
+- **feat**: New features or enhancements
+- **fix**: Bug fixes
+- **refactor**: Code restructuring without functional change
+- **docs**: Documentation updates
+- **chore**: Maintenance (dependencies, tooling, config)
+- **test**: Test-related updates
+- **style**: Code style and formatting
+
+### Dependencies Commit Format
+- Python packages: `py(deps): Package update`
+- Python dev packages: `py(deps[dev]): Dev package update`
+
+### Examples
+
+#### Feature Addition
+```
+core/schema(feat[Query]): Add fruit filtering by color
+
+why: Users need to filter fruits by color in GraphQL queries
+what:
+- Add color filter parameter to fruits query
+- Update resolver to handle color filtering
+- Add tests for color filtering
+
+refs: #42
+```
+
+#### Bug Fix
+```
+core/types(fix[FruitType]): Correct optional color relationship
+
+why: Color field was incorrectly marked as required
+what:
+- Change color field to use Optional type
+- Update tests to handle None values
+
+refs: #38
+```
+
+#### Dependencies Update
+```
+py(deps[dev]): Add django-stubs for type checking
+
+why: Improve type safety for Django models and ORM
+what:
+- Add django-stubs to dev dependencies
+- Configure MyPy to use django-stubs plugin
+```
+
+### Guidelines
+- Subject line: Maximum 50 characters
+- Body lines: Maximum 72 characters
+- Use imperative mood ("Add", "Fix", not "Added", "Fixed")
+- One topic per commit
+- Separate subject from body with blank line
+- Mark breaking changes: `BREAKING:`
