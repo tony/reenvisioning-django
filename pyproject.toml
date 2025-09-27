@@ -87,7 +87,7 @@ convention = "numpy"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "envision.settings.base"
-addopts = "--tb=short --no-header --showlocals --doctest-modules"
+addopts = "--tb=short --no-header --showlocals"
 doctest_optionflags = "ELLIPSIS NORMALIZE_WHITESPACE"
 testpaths = [
   "src",
