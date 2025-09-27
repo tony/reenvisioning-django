@@ -1,17 +1,20 @@
 """Integration tests for the core app."""
 
 import json
+from typing import Any
 
 import pytest
 from django.test import Client
 from django.urls import reverse
+
+from envision.core.models import Color, Fruit
 
 
 @pytest.mark.django_db
 class TestGraphQLEndpoints:
     """Test GraphQL endpoints availability."""
 
-    def test_graphql_async_endpoint(self, client):
+    def test_graphql_async_endpoint(self, client: Client) -> None:
         """Test that async GraphQL endpoint is accessible."""
         # Test with POST
         response = client.post(
@@ -24,7 +27,7 @@ class TestGraphQLEndpoints:
         assert "data" in data
         assert data["data"]["__typename"] == "Query"
 
-    def test_graphql_sync_endpoint(self, client):
+    def test_graphql_sync_endpoint(self, client: Client) -> None:
         """Test that sync GraphQL endpoint is accessible."""
         response = client.post(
             "/graphql/sync",
@@ -36,7 +39,7 @@ class TestGraphQLEndpoints:
         assert "data" in data
         assert data["data"]["__typename"] == "Query"
 
-    def test_graphql_introspection(self, client):
+    def test_graphql_introspection(self, client: Client) -> None:
         """Test GraphQL introspection query."""
         query = """
             query {
@@ -76,7 +79,7 @@ class TestGraphQLEndpoints:
 class TestFullWorkflow:
     """Test complete workflows through the application."""
 
-    def test_create_and_query_fruit_workflow(self, client):
+    def test_create_and_query_fruit_workflow(self, client: Client) -> None:
         """Test creating a color and fruit, then querying them."""
         # Create a color
         create_color_mutation = """
@@ -96,7 +99,6 @@ class TestFullWorkflow:
         color_data = response.json()["data"]["createColor"]
 
         # Get the color ID from previous response
-        from envision.core.models import Color
         yellow_color = Color.objects.get(name="yellow")
 
         # Create a fruit with that color
@@ -142,7 +144,7 @@ class TestFullWorkflow:
         assert lemon is not None
         assert lemon["color"]["name"] == "yellow"
 
-    def test_user_registration_workflow(self, client):
+    def test_user_registration_workflow(self, client: Client) -> None:
         """Test user registration through GraphQL."""
         register_mutation = """
             mutation {
