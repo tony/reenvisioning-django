@@ -1,6 +1,7 @@
 """Tests for GraphQL mutations."""
 
 import json
+from typing import Any, Dict, Optional
 
 import pytest
 from django.contrib.auth import get_user_model
@@ -15,21 +16,21 @@ class TestGraphQLMutations:
     """Test cases for GraphQL mutations."""
 
     @pytest.fixture(autouse=True)
-    def setup(self):
+    def setup(self) -> None:
         """Set up test client and GraphQL endpoint."""
         self.client = Client()
         self.graphql_url = "/graphql"
 
-    def execute_mutation(self, mutation, variables=None):
+    def execute_mutation(self, mutation: str, variables: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Helper method to execute GraphQL mutation."""
         response = self.client.post(
             self.graphql_url,
             data=json.dumps({"query": mutation, "variables": variables or {}}),
             content_type="application/json",
         )
-        return response.json()
+        return response.json()  # type: ignore[no-any-return]
 
-    def test_create_fruit(self, red_color):
+    def test_create_fruit(self, red_color: Color) -> None:
         """Test creating a new fruit."""
         mutation = """
             mutation CreateFruit($input: FruitInput!) {
@@ -57,7 +58,7 @@ class TestGraphQLMutations:
         fruit = Fruit.objects.get(name="apple")
         assert fruit.color == red_color
 
-    def test_create_fruit_without_color(self):
+    def test_create_fruit_without_color(self) -> None:
         """Test creating a fruit without a color."""
         mutation = """
             mutation CreateFruit($input: FruitInput!) {
@@ -74,19 +75,19 @@ class TestGraphQLMutations:
         fruit_data = result["data"]["createFruit"]
         assert fruit_data["name"] == "banana"
 
-    def test_update_fruits(self, strawberry, blue_color):
+    def test_update_fruits(self, strawberry: Fruit, blue_color: Color) -> None:
         """Test updating existing fruits."""
         # The actual API uses updateFruits which takes a list
         # Skip this test as the API doesn't support single updates the way we're testing
         pytest.skip("updateFruits API requires different structure")
 
-    def test_delete_fruits(self, strawberry):
+    def test_delete_fruits(self, strawberry: Fruit) -> None:
         """Test deleting fruits."""
         # The actual API for deleteFruits requires different structure
         # Skip this test as the API doesn't match our test structure
         pytest.skip("deleteFruits API requires different structure")
 
-    def test_create_color(self):
+    def test_create_color(self) -> None:
         """Test creating a new color."""
         mutation = """
             mutation CreateColor($input: ColorInput!) {
@@ -106,19 +107,19 @@ class TestGraphQLMutations:
         # Verify in database
         assert Color.objects.filter(name="green").exists()
 
-    def test_update_colors(self, red_color):
+    def test_update_colors(self, red_color: Color) -> None:
         """Test updating existing colors."""
         # The actual API for updateColors requires different structure
         # Skip this test as the API doesn't match our test structure
         pytest.skip("updateColors API requires different structure")
 
-    def test_delete_colors(self, blue_color, blueberry):
+    def test_delete_colors(self, blue_color: Color, blueberry: Fruit) -> None:
         """Test deleting colors (cascades to delete related fruits)."""
         # The actual API for deleteColors requires different structure
         # Skip this test as the API doesn't match our test structure
         pytest.skip("deleteColors API requires different structure")
 
-    def test_register_user(self):
+    def test_register_user(self) -> None:
         """Test user registration mutation."""
         mutation = """
             mutation RegisterUser($input: UserInput!) {
