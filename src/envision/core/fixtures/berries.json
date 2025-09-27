@@ -1,6 +1,6 @@
 [
 {
-  "model": "app.fruit",
+  "model": "core.fruit",
   "pk": 1,
   "fields": {
     "name": "strawberry",
@@ -8,7 +8,7 @@
   }
 },
 {
-  "model": "app.fruit",
+  "model": "core.fruit",
   "pk": 2,
   "fields": {
     "name": "raspberry",
@@ -16,7 +16,7 @@
   }
 },
 {
-  "model": "app.fruit",
+  "model": "core.fruit",
   "pk": 3,
   "fields": {
     "name": "blueberry",
@@ -24,14 +24,14 @@
   }
 },
 {
-  "model": "app.color",
+  "model": "core.color",
   "pk": 1,
   "fields": {
     "name": "red"
   }
 },
 {
-  "model": "app.color",
+  "model": "core.color",
   "pk": 2,
   "fields": {
     "name": "blue"
