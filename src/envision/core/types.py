@@ -13,14 +13,14 @@ from . import models
 # filters
 
 
-@strawberry_django.filters.filter(models.Fruit, lookups=True)
+@strawberry_django.filters.filter_type(models.Fruit, lookups=True)
 class FruitFilter:
     id: auto
     name: auto
     color: "ColorFilter"
 
 
-@strawberry_django.filters.filter(models.Color, lookups=True)
+@strawberry_django.filters.filter_type(models.Color, lookups=True)
 class ColorFilter:
     id: auto
     name: auto
@@ -30,13 +30,13 @@ class ColorFilter:
 # order
 
 
-@strawberry_django.ordering.order(models.Fruit)
+@strawberry_django.ordering.order_type(models.Fruit)
 class FruitOrder:
     name: auto
     color: "ColorOrder"
 
 
-@strawberry_django.ordering.order(models.Color)
+@strawberry_django.ordering.order_type(models.Color)
 class ColorOrder:
     name: auto
     fruit: FruitOrder
