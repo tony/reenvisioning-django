@@ -48,7 +48,7 @@ plugins = ["mypy_django_plugin.main"]
 django_settings_module = "envision.settings.base"
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py314"
 
 [tool.ruff.lint]
 select = [
