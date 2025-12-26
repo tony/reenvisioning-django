@@ -157,6 +157,18 @@ what:
 - Add django-stubs to dev dependencies
 - Configure MyPy to use django-stubs plugin
 ```
+For multi-line commits, use heredoc to preserve formatting:
+```bash
+git commit -m "$(cat <<'EOF'
+feat(Component[method]) add feature description
+
+why: Explanation of the change.
+what:
+- First change
+- Second change
+EOF
+)"
+```
 
 ### Guidelines
 - Subject line: Maximum 50 characters
