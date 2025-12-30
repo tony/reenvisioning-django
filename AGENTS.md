@@ -100,6 +100,38 @@ When modifying existing code:
 - Ensure type hints are used throughout (MyPy will check this)
 - Add tests for new functionality in the appropriate test files
 
+## Doctests
+
+**All functions and methods MUST have working doctests.** Doctests serve as both documentation and tests.
+
+**CRITICAL RULES:**
+- Doctests MUST actually execute - never comment out function calls or similar
+- Doctests MUST NOT be converted to `.. code-block::` as a workaround (code-blocks don't run)
+- If you cannot create a working doctest, **STOP and ask for help**
+
+**Available tools for doctests:**
+- `doctest_namespace` fixtures: `client`, `user`, `red_color`, `blue_color`, `strawberry`, `blueberry`, `raspberry`
+- Django `settings` fixture (from pytest-django)
+- Ellipsis for variable output: `# doctest: +ELLIPSIS`
+- Update `conftest.py` to add new fixtures to `doctest_namespace`
+
+**`# doctest: +SKIP` is NOT permitted** - it's just another workaround that doesn't test anything. Use fixtures properly.
+
+**Using fixtures in doctests:**
+```python
+>>> from envision.core.models import Fruit
+>>> Fruit.objects.count()  # doctest: +ELLIPSIS
+...
+```
+
+**When output varies, use ellipsis:**
+```python
+>>> strawberry.name  # strawberry from doctest_namespace
+'Strawberry'
+>>> strawberry.color  # doctest: +ELLIPSIS
+<Color: ...>
+```
+
 ## Git Commit Standards
 
 ### Commit Message Format
