@@ -30,7 +30,7 @@ dev = [
   "pytest-rerunfailures",
   "pytest-watcher",
   # Lint
-  "ruff",
+  "ruff>=0.16.0",
   "mypy",
   "typing-extensions",
   "django-stubs[compatible-mypy]",
@@ -51,7 +51,10 @@ django_settings_module = "envision.settings.base"
 target-version = "py314"
 
 [tool.ruff.lint]
-select = [
+# `select` is deliberately unset: ruff 0.16 enables a curated default rule
+# set, and an explicit `select` would replace it rather than extend it.
+# `extend-select` layers this project's additional linters on top.
+extend-select = [
   "E", # pycodestyle
   "F", # pyflakes
   "I", # isort
