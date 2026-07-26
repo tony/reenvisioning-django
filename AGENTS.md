@@ -100,6 +100,29 @@ When modifying existing code:
 - Ensure type hints are used throughout (MyPy will check this)
 - Add tests for new functionality in the appropriate test files
 
+## Classes with fields
+
+**Classes with fields** — `NamedTuple`, dataclasses — document every field in
+an `Attributes` section:
+
+```python
+class QueryCase(NamedTuple):
+    """One ORM query a lesson measures.
+
+    Attributes
+    ----------
+    label : str
+        Name the lesson refers to the query by.
+    query_count : int
+        Queries the ORM issued, the figure the lesson compares.
+    """
+```
+
+A type says how a field is shaped, not what it holds. Describing each one
+keeps that meaning next to the code, and anything that renders the class —
+autodoc, a REPL, an editor tooltip — has a description to show instead of a
+bare name.
+
 ## Doctests
 
 **All functions and methods MUST have working doctests.** Doctests serve as both documentation and tests.
