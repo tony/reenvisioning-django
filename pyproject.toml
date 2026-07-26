@@ -30,7 +30,7 @@ dev = [
   "pytest-rerunfailures",
   "pytest-watcher",
   # Lint
-  "ruff",
+  "ruff>=0.16.0",
   "mypy",
   "typing-extensions",
   "django-stubs[compatible-mypy]",
